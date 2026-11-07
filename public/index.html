@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telecom Customer Churn Analytics Dashboard</title>
+  
+  <!-- Google Fonts: Poppins (Uniform System Font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Local High-Speed FontAwesome Icons (Zero CDN reliance) -->
+  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+  
+  <!-- Visualization & Animation Libraries (Local High-Speed Bundled) -->
+  <script src="vendor/chart.umd.min.js"></script>
+  <script src="vendor/three.min.js"></script>
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Background Accents -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Background Signal Canvas -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- Top Navigation Bar -->
+  <nav class="vip-navbar">
+    <div class="nav-brand">
+      <div class="brand-hex">
+        <i class="fa-solid fa-tower-broadcast"></i>
+      </div>
+      <div class="brand-titles">
+        <span class="brand-title">TELCO <span class="text-neon-cyan">CHURN ANALYTICS</span></span>
+        <span class="brand-sub">Customer Retention & Churn Dashboard</span>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="#filters" class="nav-item active"><i class="fa-solid fa-filter"></i> Filters</a>
+      <a href="#kpis" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Key Metrics</a>
+      <a href="#diagnostics" class="nav-item"><i class="fa-solid fa-layer-group"></i> Analysis</a>
+      <a href="#models" class="nav-item"><i class="fa-solid fa-brain"></i> AI Model</a>
+      <a href="#simulator" class="nav-item highlight-btn"><i class="fa-solid fa-sliders"></i> Risk Calculator</a>
+      <a href="#recommendations" class="nav-item"><i class="fa-solid fa-lightbulb"></i> Action Plan</a>
+      <a href="#explorer" class="nav-item"><i class="fa-solid fa-database"></i> Customer Data</a>
+    </div>
+
+    <div class="nav-author-badge">
+      <div class="author-dot pulse-online"></div>
+      <div>
+        <div class="author-name">Intikhab Ahmad Shah</div>
+        <div class="author-role">Data Analyst &bull; PSEB AI Bootcamp</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-content">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-left">
+        <div class="hero-pill-badge">
+          <span class="pill-dot"></span>
+          <span>CUSTOMER RETENTION & CHURN ANALYSIS</span>
+          <span class="pill-tag">7,043 Customers</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Understand Why Customers Leave. <br>
+          <span class="text-gradient-cyan">Take Action to Keep Them.</span>
+        </h1>
+
+        <p class="hero-description">
+          A complete data analysis and machine learning project based on <strong>7,043 verified telecom customer accounts</strong>. 
+          Our tuned model detects <strong>82% of customers</strong> who are at risk of leaving, allowing the company to take action early and protect monthly revenue.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#simulator" class="btn-vip btn-primary">
+            <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+            <span>Try Churn Predictor</span>
+          </a>
+          <a href="#diagnostics" class="btn-vip btn-glass">
+            <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span>View Analysis</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-status-card glass-panel">
+          <div class="status-header">
+            <span class="status-title"><i class="fa-solid fa-circle-check text-neon-cyan"></i> MODEL PERFORMANCE SUMMARY</span>
+            <span class="badge-online">VERIFIED RESULTS</span>
+          </div>
+          <div class="status-metrics-grid">
+            <div class="status-cell">
+              <span class="cell-label">BEST MODEL</span>
+              <span class="cell-val text-neon-cyan">Tuned Random Forest</span>
+            </div>
+            <div class="status-cell">
+              <span class="cell-label">CHURN DETECTION RATE</span>
+              <span class="cell-val text-neon-emerald">82.09% (307/374 Caught)</span>
+            </div>
+            <div class="status-cell">
+              <span class="cell-label">ACCURACY SCORE</span>
+              <span class="cell-val text-neon-purple">84.1% ROC Score</span>
+            </div>
+            <div class="status-cell">
+              <span class="cell-label">DATASET AUDITED</span>
+              <span class="cell-val text-neon-amber">7,043 Clean Records</span>
+            </div>
+          </div>
+          <div class="status-footer">
+            <i class="fa-solid fa-shield-halved text-neon-cyan"></i>
+            <span>Trained to catch at-risk customers early and save recurring revenue.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GLOBAL INTERACTIVE FILTER BAR (Cross-Filtering Entire Dashboard) -->
+    <section id="filters" class="filter-bar-section">
+      <div class="filter-bar-card glass-panel">
+        <div class="filter-bar-top">
+          <div class="filter-bar-title">
+            <svg class="icon-svg text-neon-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            <span>Interactive Dashboard Filters</span>
+            <span class="filter-hint">&mdash; Select any filter to transform all metrics and charts in real time</span>
+          </div>
+          <div class="filter-status-wrap">
+            <span class="filter-count-badge" id="active-filter-badge"><svg class="label-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Showing: All 7,043 Customers</span>
+            <button id="btn-reset-filters" class="btn-reset-filters"><svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> Reset Filters</button>
+          </div>
+        </div>
+
+        <div class="filter-inputs-grid">
+          <div class="filter-field">
+            <label><svg class="label-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Contract Type</label>
+            <select id="global-filter-contract" class="filter-select">
+              <option value="All" selected>All Contracts (7,043)</option>
+              <option value="Month-to-month">Month-to-month (3,875)</option>
+              <option value="One year">One year (1,473)</option>
+              <option value="Two year">Two year (1,695)</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label><svg class="label-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg> Internet Service</label>
+            <select id="global-filter-internet" class="filter-select">
+              <option value="All" selected>All Internet Services</option>
+              <option value="Fiber optic">Fiber optic (3,096)</option>
+              <option value="DSL">DSL (2,421)</option>
+              <option value="No">No Internet (1,526)</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label><svg class="label-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Payment Method</label>
+            <select id="global-filter-payment" class="filter-select">
+              <option value="All" selected>All Payment Methods</option>
+              <option value="Electronic check">Electronic check (2,365)</option>
+              <option value="Mailed check">Mailed check (1,612)</option>
+              <option value="Bank transfer (automatic)">Bank transfer (auto) (1,544)</option>
+              <option value="Credit card (automatic)">Credit card (auto) (1,522)</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label><svg class="label-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg> Customer Status</label>
+            <select id="global-filter-churn" class="filter-select">
+              <option value="All" selected>All Customers</option>
+              <option value="Yes">Churned Customers Only (1,869)</option>
+              <option value="No">Retained Customers Only (5,174)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY PERFORMANCE INDICATORS (Dynamic Counters) -->
+    <section id="kpis" class="kpi-grid">
+      <div class="kpi-card glass-panel" data-tilt>
+        <div class="kpi-icon-wrap icon-cyan">
+          <svg class="kpi-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="kpi-meta">
+          <span class="kpi-label">TOTAL CUSTOMERS</span>
+          <div class="kpi-value-wrap">
+            <span class="kpi-num" id="counter-subscribers">7043</span>
+            <span class="kpi-unit">Accounts</span>
+          </div>
+          <span class="kpi-trend text-neon-cyan" id="kpi-sub-trend">&check; 100% Verified in Dataset</span>
+        </div>
+      </div>
+
+      <div class="kpi-card glass-panel" data-tilt>
+        <div class="kpi-icon-wrap icon-crimson">
+          <svg class="kpi-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" y1="8" x2="22" y2="13"/><line x1="22" y1="8" x2="17" y2="13"/></svg>
+        </div>
+        <div class="kpi-meta">
+          <span class="kpi-label">CHURN RATE</span>
+          <div class="kpi-value-wrap">
+            <span class="kpi-num" id="counter-churn">26.54</span>
+            <span class="kpi-unit">%</span>
+          </div>
+          <span class="kpi-trend text-neon-crimson" id="kpi-churn-count">&nearr; 1,869 Customers Left</span>
+        </div>
+      </div>
+
+      <div class="kpi-card glass-panel" data-tilt>
+        <div class="kpi-icon-wrap icon-amber">
+          <svg class="kpi-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="kpi-meta">
+          <span class="kpi-label">MONTHLY REVENUE AT RISK</span>
+          <div class="kpi-value-wrap">
+            <span class="kpi-prefix">$</span>
+            <span class="kpi-num" id="counter-risk">139128</span>
+            <span class="kpi-unit">/mo</span>
+          </div>
+          <span class="kpi-trend text-neon-amber" id="kpi-revenue-trend">&#9888; $1.67M Annual Loss</span>
+        </div>
+      </div>
+
+      <div class="kpi-card glass-panel" data-tilt>
+        <div class="kpi-icon-wrap icon-emerald">
+          <svg class="kpi-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div class="kpi-meta">
+          <span class="kpi-label">CHURN DETECTION RATE</span>
+          <div class="kpi-value-wrap">
+            <span class="kpi-num" id="counter-recall">82.09</span>
+            <span class="kpi-unit">%</span>
+          </div>
+          <span class="kpi-trend text-neon-emerald">&#10003; 307 of 374 Caught by AI</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: CONTRACTS & TENURE -->
+    <section id="diagnostics" class="vip-section">
+      <div class="section-header">
+        <span class="section-tag text-neon-cyan"><i class="fa-solid fa-chart-column"></i> ANALYSIS STEP 1 & 2</span>
+        <h2 class="section-title">Contract Types & Customer Tenure</h2>
+        <p class="section-desc">See how contract duration and customer relationship length affect churn rates.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Contract Card -->
+        <div class="vip-card glass-panel">
+          <div class="card-top">
+            <div>
+              <h3 class="card-heading">Churn Rate by Contract Type</h3>
+              <p class="card-sub">Month-to-Month contracts have 15 times higher churn than 2-Year contracts.</p>
+            </div>
+            <span class="card-badge badge-crimson">Highest Impact</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart-contract"></canvas>
+          </div>
+          <div class="findings-box">
+            <div class="findings-badge"><i class="fa-solid fa-lightbulb"></i> KEY FINDING</div>
+            <p id="insight-contract"><strong>Month-to-month contracts (42.71% churn)</strong> account for over 88% of all lost customers. Switching customers to 1-Year (11.27%) or 2-Year (2.83%) contracts is the most effective way to keep them.</p>
+          </div>
+        </div>
+
+        <!-- Tenure Card -->
+        <div class="vip-card glass-panel">
+          <div class="card-top">
+            <div>
+              <h3 class="card-heading">Churn Rate by Customer Tenure</h3>
+              <p class="card-sub">New customers leave early: the average churner leaves within 10 months.</p>
+            </div>
+            <span class="card-badge badge-amber">First-Year Risk</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart-tenure"></canvas>
+          </div>
+          <div class="findings-box">
+            <div class="findings-badge"><i class="fa-solid fa-lightbulb"></i> KEY FINDING</div>
+            <p id="insight-tenure"><strong>47.44% of churn happens in the first 12 months</strong>. After 24 months, churn drops to 14.5%, and after 4 years it drops to only 7.4%. Helping new customers in their first 90 days is critical.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: BILLS & PAYMENT METHODS -->
+    <section class="vip-section">
+      <div class="section-header">
+        <span class="section-tag text-neon-purple"><i class="fa-solid fa-money-bill"></i> ANALYSIS STEP 3 & 4</span>
+        <h2 class="section-title">Monthly Bills & Payment Methods</h2>
+        <p class="section-desc">See how pricing and payment methods influence customer retention.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Monthly Bill Card -->
+        <div class="vip-card glass-panel">
+          <div class="card-top">
+            <div>
+              <h3 class="card-heading">Monthly Bill Ranges ($70 to $100 Risk Zone)</h3>
+              <p class="card-sub">Churners pay an average of $74.44/mo vs $61.27/mo for loyal customers.</p>
+            </div>
+            <span class="card-badge badge-purple">Pricing Impact</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart-charges"></canvas>
+          </div>
+          <div class="findings-box">
+            <div class="findings-badge"><i class="fa-solid fa-lightbulb"></i> KEY FINDING</div>
+            <p id="insight-charges">Customers paying <strong>$70 to $100 per month churn at 37.23%</strong>, mostly because Fiber Optic users feel the price is high when they lack technical support. Adding free perks helps make the price feel fair.</p>
+          </div>
+        </div>
+
+        <!-- Payment Method Card -->
+        <div class="vip-card glass-panel">
+          <div class="card-top">
+            <div>
+              <h3 class="card-heading">Payment Method Comparison</h3>
+              <p class="card-sub">Electronic checks have nearly 3 times higher churn than automated credit card payments.</p>
+            </div>
+            <span class="card-badge badge-cyan">Autopay Advantage</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart-payment"></canvas>
+          </div>
+          <div class="findings-box">
+            <div class="findings-badge"><i class="fa-solid fa-lightbulb"></i> KEY FINDING</div>
+            <p id="insight-payment"><strong>Electronic check users churn at 45.29%</strong> because manual bill payment reminds them to consider canceling. Automatic bank or credit card payments cut churn down to 15.2% &ndash; 16.7%.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MACHINE LEARNING & RECALL RESULTS -->
+    <section id="models" class="vip-section">
+      <div class="section-header">
+        <span class="section-tag text-neon-emerald"><i class="fa-solid fa-brain"></i> ANALYSIS STEP 5 & 6</span>
+        <h2 class="section-title">Machine Learning Model Results</h2>
+        <p class="section-desc">Comparing algorithms and tuning the model to catch 82% of at-risk customers.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Recall Surge Chart -->
+        <div class="vip-card glass-panel">
+          <div class="card-top">
+            <div>
+              <h3 class="card-heading">Model Comparison: Catching Churners</h3>
+              <p class="card-sub">Balancing class weights boosted churn detection from 48.9% to 82.1%.</p>
+            </div>
+            <span class="card-badge badge-emerald">+40.2% Catch Rate</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart-recall"></canvas>
+          </div>
+          <div class="findings-box">
+            <div class="findings-badge"><i class="fa-solid fa-lightbulb"></i> WHY THIS MATTERS</div>
+            <p><strong>The Cost of Missing a Customer:</strong> Losing a customer costs hundreds of dollars in lost future revenue. A small retention discount costs only a few dollars. Therefore, catching churners is far more important than raw accuracy.</p>
+          </div>
+        </div>
+
+        <!-- Diagnostic Confusion Matrix -->
+        <div class="vip-card glass-panel">
+          <div class="card-top">
+            <div>
+              <h3 class="card-heading">Test Set Results (1,409 Unseen Customers)</h3>
+              <p class="card-sub">Evaluation on brand new holdout accounts never seen during training.</p>
+            </div>
+            <span class="card-badge badge-cyan">ROC Score: 84.1%</span>
+          </div>
+          
+          <div class="cm-grid">
+            <div class="cm-cell cm-tn">
+              <span class="cm-tag">LOYAL CUSTOMERS KEPT</span>
+              <span class="cm-num">729</span>
+              <span class="cm-pct">51.7% of Test Set</span>
+            </div>
+            <div class="cm-cell cm-fp">
+              <span class="cm-tag">FALSE ALARMS</span>
+              <span class="cm-num">306</span>
+              <span class="cm-pct">21.7% of Test Set</span>
+            </div>
+            <div class="cm-cell cm-fn">
+              <span class="cm-tag">MISSED CHURNERS</span>
+              <span class="cm-num">67</span>
+              <span class="cm-pct">Only 4.8% Missed</span>
+            </div>
+            <div class="cm-cell cm-tp">
+              <span class="cm-tag">CHURNERS CAUGHT</span>
+              <span class="cm-num">307</span>
+              <span class="cm-pct">82.1% Detection Rate</span>
+            </div>
+          </div>
+
+          <div class="findings-box">
+            <div class="findings-badge"><i class="fa-solid fa-circle-check"></i> MODEL ACCURACY</div>
+            <p>On unseen test data, the tuned model successfully catches <strong>307 out of 374 actual churners</strong>, missing only 67 customers, with an overall ROC Score of 84.1%.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Importance Bar -->
+      <div class="vip-card glass-panel mt-24">
+        <div class="card-top">
+          <div>
+            <h3 class="card-heading">Top 15 Factors That Cause Customers to Leave</h3>
+            <p class="card-sub">The most influential features discovered by our Random Forest model.</p>
+          </div>
+          <span class="card-badge badge-purple">Feature Importance</span>
+        </div>
+        <div class="chart-container-large">
+          <canvas id="chart-features"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: REAL-TIME CHURN PREDICTOR -->
+    <section id="simulator" class="vip-section">
+      <div class="section-header">
+        <span class="section-tag text-neon-cyan"><i class="fa-solid fa-calculator"></i> ANALYSIS STEP 7</span>
+        <h2 class="section-title">Live Churn Risk Calculator</h2>
+        <p class="section-desc">Select customer details below to calculate their risk of leaving and get recommended actions.</p>
+      </div>
+
+      <div class="simulator-wrapper glass-panel">
+        <div class="sim-left-controls">
+          <h3 class="sim-panel-title"><i class="fa-solid fa-user-gear text-neon-cyan"></i> Customer Profile Information</h3>
+          
+          <div class="sim-grid-controls">
+            <!-- Contract Selection -->
+            <div class="sim-field">
+              <label><i class="fa-solid fa-file-contract"></i> Contract Type</label>
+              <select id="sim-contract" class="sim-select">
+                <option value="Month-to-month" selected>Month-to-month (High Risk)</option>
+                <option value="One year">One year (Moderate)</option>
+                <option value="Two year">Two year (Low Risk)</option>
+              </select>
+            </div>
+
+            <!-- Internet Service -->
+            <div class="sim-field">
+              <label><i class="fa-solid fa-wifi"></i> Internet Service</label>
+              <select id="sim-internet" class="sim-select">
+                <option value="Fiber optic" selected>Fiber optic (High Speed)</option>
+                <option value="DSL">DSL (Copper)</option>
+                <option value="No">No Internet Service</option>
+              </select>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="sim-field">
+              <label><i class="fa-solid fa-credit-card"></i> Payment Method</label>
+              <select id="sim-payment" class="sim-select">
+                <option value="Electronic check" selected>Electronic check (Manual)</option>
+                <option value="Mailed check">Mailed check (Manual)</option>
+                <option value="Bank transfer (automatic)">Bank transfer (Autopay)</option>
+                <option value="Credit card (automatic)">Credit card (Autopay)</option>
+              </select>
+            </div>
+
+            <!-- Paperless Billing -->
+            <div class="sim-field">
+              <label><i class="fa-solid fa-envelope-open-text"></i> Paperless Billing</label>
+              <select id="sim-paperless" class="sim-select">
+                <option value="Yes" selected>Yes (Email Bill)</option>
+                <option value="No">No (Paper Mail)</option>
+              </select>
+            </div>
+
+            <!-- Online Security -->
+            <div class="sim-field">
+              <label><i class="fa-solid fa-shield-virus"></i> Online Security</label>
+              <select id="sim-security" class="sim-select">
+                <option value="No" selected>No Online Security</option>
+                <option value="Yes">Yes (Protected)</option>
+                <option value="No internet service">No Internet Service</option>
+              </select>
+            </div>
+
+            <!-- Tech Support -->
+            <div class="sim-field">
+              <label><i class="fa-solid fa-headset"></i> Tech Support</label>
+              <select id="sim-tech" class="sim-select">
+                <option value="No" selected>No Tech Support</option>
+                <option value="Yes">Yes (Dedicated Tech Support)</option>
+                <option value="No internet service">No Internet Service</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Sliders -->
+          <div class="sim-sliders-box">
+            <div class="slider-row">
+              <div class="slider-header">
+                <label><i class="fa-solid fa-calendar-days"></i> Customer Tenure (Months with Company)</label>
+                <span class="slider-badge" id="tenure-badge">3 Months</span>
+              </div>
+              <input type="range" id="sim-tenure" min="0" max="72" value="3" class="vip-slider">
+            </div>
+
+            <div class="slider-row">
+              <div class="slider-header">
+                <label><i class="fa-solid fa-money-bill-wave"></i> Monthly Bill Amount</label>
+                <span class="slider-badge" id="charges-badge">$85.00 / mo</span>
+              </div>
+              <input type="range" id="sim-charges" min="18" max="120" value="85" step="0.5" class="vip-slider">
+            </div>
+          </div>
+
+          <button id="btn-predict" class="btn-vip btn-primary btn-block">
+            <i class="fa-solid fa-calculator"></i> Calculate Churn Risk Score
+          </button>
+        </div>
+
+        <!-- Prediction Outcome Display -->
+        <div class="sim-right-results">
+          <div class="gauge-card glass-panel">
+            <span class="gauge-title">CHURN RISK SCORE</span>
+            
+            <div class="circular-gauge-wrap">
+              <svg class="gauge-svg" viewBox="0 0 160 160">
+                <circle class="gauge-bg" cx="80" cy="80" r="70"></circle>
+                <circle class="gauge-progress" id="gauge-arc" cx="80" cy="80" r="70"></circle>
+              </svg>
+              <div class="gauge-center-info">
+                <span class="gauge-percent" id="prob-percent">83.1%</span>
+                <span class="gauge-caption">CHURN RISK</span>
+              </div>
+            </div>
+
+            <div class="risk-badge-box">
+              <div id="risk-badge" class="badge-risk-critical">
+                <i class="fa-solid fa-triangle-exclamation"></i> HIGH CHURN RISK
+              </div>
+            </div>
+
+            <div class="prescription-box">
+              <h4 class="presc-title"><i class="fa-solid fa-lightbulb text-neon-cyan"></i> Recommended Actions to Keep Customer:</h4>
+              <ul id="presc-list" class="presc-list">
+                <li><i class="fa-solid fa-circle-arrow-right text-neon-cyan"></i> Offer a 15% discount to switch to a 1-Year or 2-Year contract.</li>
+                <li><i class="fa-solid fa-circle-arrow-right text-neon-cyan"></i> Give a $5 monthly bill credit to set up automatic bill pay.</li>
+                <li><i class="fa-solid fa-circle-arrow-right text-neon-cyan"></i> Include free Tech Support and Online Security.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: 4 RECOMMENDED BUSINESS ACTIONS -->
+    <section id="recommendations" class="vip-section">
+      <div class="section-header">
+        <span class="section-tag text-neon-amber"><i class="fa-solid fa-list-check"></i> ANALYSIS STEP 8</span>
+        <h2 class="section-title">4 Recommended Business Actions</h2>
+        <p class="section-desc">Practical, data-backed steps the company can take to reduce churn and save revenue.</p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card glass-panel border-cyan" data-tilt>
+          <div class="pillar-num">01</div>
+          <div class="pillar-icon-wrap icon-cyan">
+            <i class="fa-solid fa-file-signature"></i>
+          </div>
+          <span class="pillar-tag text-neon-cyan">ACTION ONE</span>
+          <h3 class="pillar-title">Incentivize Longer Contracts</h3>
+          <p class="pillar-text">
+            Month-to-month contracts have <strong>42.71% churn</strong> versus only 2.83% for 2-year contracts. 
+            Launch a simple campaign offering a 10% monthly discount or a free device upgrade when customers switch to a 1- or 2-year plan.
+          </p>
+        </div>
+
+        <div class="pillar-card glass-panel border-emerald" data-tilt>
+          <div class="pillar-num">02</div>
+          <div class="pillar-icon-wrap icon-emerald">
+            <i class="fa-solid fa-stopwatch"></i>
+          </div>
+          <span class="pillar-tag text-neon-emerald">ACTION TWO</span>
+          <h3 class="pillar-title">Support in the First 90 Days</h3>
+          <p class="pillar-text">
+            Over 50% of lost customers leave within their first year (average 10 months). 
+            Call new customers in week 2 to ensure internet setup is working smoothly and send a satisfaction survey at month 3.
+          </p>
+        </div>
+
+        <div class="pillar-card glass-panel border-crimson" data-tilt>
+          <div class="pillar-num">03</div>
+          <div class="pillar-icon-wrap icon-crimson">
+            <i class="fa-solid fa-credit-card"></i>
+          </div>
+          <span class="pillar-tag text-neon-crimson">ACTION THREE</span>
+          <h3 class="pillar-title">Promote Automatic Bill Pay</h3>
+          <p class="pillar-text">
+            Electronic check users churn at <strong>45.29%</strong>&mdash;nearly 3 times higher than credit card (15.2%) or bank transfer (16.7%). 
+            Offer a $5 monthly bill discount for setting up automatic payment, removing monthly bill friction.
+          </p>
+        </div>
+
+        <div class="pillar-card glass-panel border-purple" data-tilt>
+          <div class="pillar-num">04</div>
+          <div class="pillar-icon-wrap icon-purple">
+            <i class="fa-solid fa-shield"></i>
+          </div>
+          <span class="pillar-tag text-neon-purple">ACTION FOUR</span>
+          <h3 class="pillar-title">Bundle Tech Support with Fiber</h3>
+          <p class="pillar-text">
+            Customers with monthly bills between $70 and $100 churn frequently because they lack Tech Support. 
+            Include free online security and priority phone support with Fiber Optic plans to boost perceived value.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: CUSTOMER DATA TABLE -->
+    <section id="explorer" class="vip-section">
+      <div class="section-header">
+        <span class="section-tag text-neon-cyan"><i class="fa-solid fa-table"></i> ANALYSIS STEP 9</span>
+        <h2 class="section-title">Customer Records Table</h2>
+        <p class="section-desc">Search, filter, and inspect customer accounts directly in the table below.</p>
+      </div>
+
+      <div class="explorer-card glass-panel">
+        <div class="explorer-controls-bar">
+          <div class="search-input-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="db-search" placeholder="Search by Customer ID, contract, payment method...">
+          </div>
+
+          <div class="db-filter-group">
+            <select id="db-filter-contract" class="sim-select select-compact">
+              <option value="All">All Contracts</option>
+              <option value="Month-to-month">Month-to-month</option>
+              <option value="One year">One year</option>
+              <option value="Two year">Two year</option>
+            </select>
+
+            <select id="db-filter-churn" class="sim-select select-compact">
+              <option value="All">All Statuses</option>
+              <option value="Yes">Churned Only</option>
+              <option value="No">Retained Only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="vip-table" id="customers-table">
+            <thead>
+              <tr>
+                <th>Customer ID</th>
+                <th>Gender</th>
+                <th>Tenure</th>
+                <th>Contract</th>
+                <th>Internet</th>
+                <th>Payment Method</th>
+                <th>Monthly Bill</th>
+                <th>Total Charges</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="customers-tbody">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-pagination-bar">
+          <span class="pagination-info" id="pagination-info">Showing records 1 - 15 of 7,043</span>
+          <div class="pagination-buttons">
+            <button class="btn-page" id="btn-prev-page" disabled><i class="fa-solid fa-chevron-left"></i> Previous</button>
+            <span class="page-indicator" id="page-indicator">Page 1</span>
+            <button class="btn-page" id="btn-next-page">Next <i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: PROJECT INFORMATION & ACKNOWLEDGMENTS -->
+    <section class="vip-section">
+      <div class="governance-panel glass-panel">
+        <div class="gov-top">
+          <h2 class="gov-title">Project Information & Acknowledgments</h2>
+          <p class="gov-sub">Developed for the Pakistan Software Export Board (PSEB) AI & Data Analytics Program.</p>
+        </div>
+
+        <div class="gov-cards-grid">
+          <div class="gov-card">
+            <span class="gov-role text-neon-cyan">DATA ANALYST & AUTHOR</span>
+            <h4 class="gov-name">Intikhab Ahmad Shah</h4>
+            <p class="gov-desc">Trainee ID: TRN-2026-000059<br>PSEB Bootcamp AI @ Iqra University (H9), Islamabad</p>
+          </div>
+
+          <div class="gov-card">
+            <span class="gov-role text-neon-emerald">BOOTCAMP TRAINER</span>
+            <h4 class="gov-name">Respected. Maam Mahnoor Salman</h4>
+            <p class="gov-desc">Lead AI & Data Science Instructor<br>Curriculum Direction & Machine Learning Mentorship</p>
+          </div>
+
+          <div class="gov-card">
+            <span class="gov-role text-neon-purple">BOOTCAMP COORDINATOR</span>
+            <h4 class="gov-name">Respected. Mr Furqan</h4>
+            <p class="gov-desc">Program Coordinator<br>Program Management & Operational Logistics Support</p>
+          </div>
+
+          <div class="gov-card">
+            <span class="gov-role text-neon-amber">BOOTCAMP ORGANIZERS</span>
+            <h4 class="gov-name">PSEB & atomcamp</h4>
+            <p class="gov-desc">Pakistan Software Export Board & atomcamp<br>National Tech Destination AI Upskilling Initiative</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Clean Footer (No Tech Buzzwords) -->
+  <footer class="vip-footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 Telecom Customer Churn Analytics Dashboard &bull; Intikhab Ahmad Shah</span>
+      <span class="tech-stack-tag">
+        PSEB AI Bootcamp &bull; Iqra University (H9), Islamabad
+      </span>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Engine -->
+  <script src="app.js"></script>
+</body>
+</html>

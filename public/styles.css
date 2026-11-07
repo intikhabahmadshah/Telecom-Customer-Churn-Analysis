@@ -1,0 +1,1433 @@
+/* ==============================================================================
+   TELECOM CHURN INTELLIGENCE VIP TERMINAL - EXECUTIVE LIGHT MODE THEME
+   Tailored for High-End Enterprise Presentation & Telecom Analytics
+   ============================================================================== */
+
+:root {
+  /* Executive Light Palette */
+  --bg-main: #F8FAFC;
+  --bg-gradient: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 45%, #F1F5F9 100%);
+  --bg-card: rgba(255, 255, 255, 0.90);
+  --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --bg-card-solid: #FFFFFF;
+  --bg-input: #FFFFFF;
+  --bg-subtle: #F8FAFC;
+  --bg-surface-tint: #F1F5F9;
+  
+  /* Borders */
+  --border-subtle: rgba(226, 232, 240, 0.9);
+  --border-strong: #CBD5E1;
+  --border-hover: rgba(14, 165, 233, 0.6);
+  
+  /* Telecom High-Contrast Brand Accents */
+  --telecom-blue: #0284C7;
+  --telecom-cyan: #0EA5E9;
+  --telecom-royal: #2563EB;
+  --telecom-emerald: #059669;
+  --telecom-crimson: #E11D48;
+  --telecom-purple: #7C3AED;
+  --telecom-amber: #D97706;
+  
+  /* Aliases for neon class compatibility */
+  --neon-cyan: #0284C7;
+  --neon-blue: #2563EB;
+  --neon-emerald: #059669;
+  --neon-crimson: #E11D48;
+  --neon-purple: #7C3AED;
+  --neon-amber: #D97706;
+  
+  /* Crisp Typographic Hierarchy */
+  --text-white: #0F172A;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+  
+  /* Executive Soft Shadows */
+  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 10px 25px -4px rgba(15, 23, 42, 0.06), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 20px 35px -6px rgba(15, 23, 42, 0.08), 0 6px 14px -3px rgba(15, 23, 42, 0.04);
+  --shadow-hover: 0 24px 45px -8px rgba(14, 165, 233, 0.16);
+  
+  /* Uniform System Font (Poppins) */
+  --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Base typography for UI elements */
+body, html, button, input, select, textarea, h1, h2, h3, h4, h5, h6,
+p, span, div, a, td, th, label,
+.brand-title, .kpi-num, .cm-num, .pillar-num, .gauge-percent, .cell-val, .card-heading, .section-title {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Explicitly protect FontAwesome Icons so they NEVER get overridden by Poppins */
+i.fa-solid, i.fas, .fa-solid, .fas, .fa {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  text-rendering: auto !important;
+  line-height: 1 !important;
+  -webkit-font-smoothing: antialiased;
+}
+i.fa-regular, i.far, .fa-regular, .far {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  text-rendering: auto !important;
+  line-height: 1 !important;
+  -webkit-font-smoothing: antialiased;
+}
+i.fa-brands, i.fab, .fa-brands, .fab {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  text-rendering: auto !important;
+  line-height: 1 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Crisp Inline SVG Icon Helpers (Zero Tofu Box Guarantee) */
+.kpi-svg {
+  width: 26px;
+  height: 26px;
+  stroke-width: 2.2;
+}
+.icon-svg {
+  width: 18px;
+  height: 18px;
+  vertical-align: -3px;
+  display: inline-block;
+}
+.btn-svg {
+  width: 16px;
+  height: 16px;
+  vertical-align: -2px;
+  display: inline-block;
+}
+.label-svg {
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-gradient);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* -------------------------------------------------------------
+   AMBIENT WATERCOLOR BACKGROUND GLOWS (LIGHT MODE)
+   ------------------------------------------------------------- */
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+}
+.glow-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.25), transparent);
+  top: -120px;
+  left: -100px;
+}
+.glow-2 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.18), transparent);
+  bottom: 8%;
+  right: -120px;
+}
+.glow-3 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.14), transparent);
+  top: 35%;
+  left: 25%;
+}
+
+/* -------------------------------------------------------------
+   BACKGROUND CANVAS (TELECOM SIGNAL WAVES & TOWERS)
+   ------------------------------------------------------------- */
+#three-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.88;
+}
+
+/* Layering */
+.vip-navbar, .main-content, .vip-footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* -------------------------------------------------------------
+   NAVIGATION BAR (LIGHT FROSTED GLASS)
+   ------------------------------------------------------------- */
+.vip-navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-hex {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--telecom-blue), var(--telecom-royal));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+}
+
+.brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+}
+.brand-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-item {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-item:hover, .nav-item.active {
+  color: var(--telecom-blue);
+  background: rgba(2, 132, 199, 0.08);
+}
+.nav-item.highlight-btn {
+  background: rgba(2, 132, 199, 0.1);
+  border: 1px solid rgba(2, 132, 199, 0.3);
+  color: var(--telecom-blue);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.12);
+}
+.nav-item.highlight-btn:hover {
+  background: linear-gradient(135deg, var(--telecom-blue), var(--telecom-royal));
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+}
+
+.nav-author-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #FFFFFF;
+  padding: 8px 18px;
+  border-radius: 30px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+.author-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--telecom-emerald);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(5, 150, 105, 0.6);
+}
+.pulse-online {
+  animation: pulse-glow 2s infinite;
+}
+@keyframes pulse-glow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+.author-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.author-role {
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+
+/* -------------------------------------------------------------
+   MAIN CONTENT & HERO SECTION
+   ------------------------------------------------------------- */
+.main-content {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 32px 48px;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 40px 0 60px 0;
+  flex-wrap: wrap;
+}
+
+.hero-left {
+  flex: 1 1 650px;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.28);
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--telecom-blue);
+  letter-spacing: 0.8px;
+  margin-bottom: 22px;
+}
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--telecom-blue);
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.6);
+}
+.pill-tag {
+  background: var(--telecom-blue);
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+.text-gradient-cyan {
+  background: linear-gradient(135deg, var(--telecom-blue), var(--telecom-royal), var(--telecom-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-neon-cyan { color: var(--telecom-blue) !important; }
+.text-neon-emerald { color: var(--telecom-emerald) !important; }
+.text-neon-crimson { color: var(--telecom-crimson) !important; }
+.text-neon-purple { color: var(--telecom-purple) !important; }
+.text-neon-amber { color: var(--telecom-amber) !important; }
+
+.hero-description {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.btn-vip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--telecom-blue), var(--telecom-royal));
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.35);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(2, 132, 199, 0.5);
+  color: #FFFFFF;
+}
+.btn-glass {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+.btn-glass:hover {
+  background: #F8FAFC;
+  border-color: var(--telecom-blue);
+  color: var(--telecom-blue);
+  transform: translateY(-2px);
+}
+
+.hero-right {
+  flex: 1 1 420px;
+}
+
+/* -------------------------------------------------------------
+   GLASS PANEL BASE (EXECUTIVE LIGHT MODE)
+   ------------------------------------------------------------- */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.glass-panel:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
+}
+
+.hero-status-card {
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.95);
+}
+.status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 14px;
+}
+.status-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--text-primary);
+}
+.badge-online {
+  background: rgba(5, 150, 105, 0.1);
+  border: 1px solid var(--telecom-emerald);
+  color: var(--telecom-emerald);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.status-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.status-cell {
+  background: #F8FAFC;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+}
+.cell-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.cell-val {
+  font-size: 15px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+.status-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: rgba(2, 132, 199, 0.05);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px dashed rgba(2, 132, 199, 0.3);
+}
+
+/* -------------------------------------------------------------
+   GLOBAL INTERACTIVE FILTER BAR (BI CROSS-FILTERING)
+   ------------------------------------------------------------- */
+.filter-bar-section {
+  margin-bottom: 36px;
+}
+
+.filter-bar-card {
+  padding: 22px 28px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+}
+
+.filter-bar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filter-bar-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.filter-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.filter-status-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-count-badge {
+  background: rgba(2, 132, 199, 0.1);
+  border: 1px solid rgba(2, 132, 199, 0.3);
+  color: var(--telecom-blue);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+.btn-reset-filters {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F1F5F9;
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-reset-filters:hover {
+  background: #E2E8F0;
+  color: var(--text-primary);
+  border-color: var(--telecom-blue);
+}
+
+.filter-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.filter-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+
+.filter-select {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 9px 12px;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filter-select:focus, .filter-select.active-filter {
+  border-color: var(--telecom-blue);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  background: #F8FAFC;
+}
+
+/* -------------------------------------------------------------
+   KPI COUNTER GRID
+   ------------------------------------------------------------- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.kpi-card {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+}
+.kpi-card:nth-child(1)::before { background: var(--telecom-blue); }
+.kpi-card:nth-child(2)::before { background: var(--telecom-crimson); }
+.kpi-card:nth-child(3)::before { background: var(--telecom-amber); }
+.kpi-card:nth-child(4)::before { background: var(--telecom-emerald); }
+
+.kpi-icon-wrap {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.icon-cyan { background: rgba(2, 132, 199, 0.1); color: var(--telecom-blue); }
+.icon-crimson { background: rgba(225, 29, 72, 0.1); color: var(--telecom-crimson); }
+.icon-amber { background: rgba(217, 119, 6, 0.1); color: var(--telecom-amber); }
+.icon-emerald { background: rgba(5, 150, 105, 0.1); color: var(--telecom-emerald); }
+.icon-purple { background: rgba(124, 58, 237, 0.1); color: var(--telecom-purple); }
+
+.kpi-meta {
+  flex: 1;
+}
+.kpi-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.kpi-value-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 4px 0;
+}
+.kpi-prefix {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+.kpi-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+.kpi-unit {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.kpi-trend {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------------
+   SECTION HEADERS & LAYOUTS
+   ------------------------------------------------------------- */
+.vip-section {
+  margin-bottom: 56px;
+}
+
+.section-header {
+  margin-bottom: 24px;
+}
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+.section-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.vip-card {
+  padding: 28px;
+  background: #FFFFFF;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.card-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.card-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.card-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.badge-crimson { background: rgba(225, 29, 72, 0.1); color: var(--telecom-crimson); border: 1px solid rgba(225, 29, 72, 0.3); }
+.badge-amber { background: rgba(217, 119, 6, 0.1); color: var(--telecom-amber); border: 1px solid rgba(217, 119, 6, 0.3); }
+.badge-purple { background: rgba(124, 58, 237, 0.1); color: var(--telecom-purple); border: 1px solid rgba(124, 58, 237, 0.3); }
+.badge-cyan { background: rgba(2, 132, 199, 0.1); color: var(--telecom-blue); border: 1px solid rgba(2, 132, 199, 0.3); }
+.badge-emerald { background: rgba(5, 150, 105, 0.1); color: var(--telecom-emerald); border: 1px solid rgba(5, 150, 105, 0.3); }
+
+.chart-container {
+  height: 270px;
+  position: relative;
+  margin-bottom: 18px;
+}
+.chart-container-large {
+  height: 380px;
+  position: relative;
+}
+
+.findings-box {
+  background: #F8FAFC;
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--telecom-blue);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.findings-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--telecom-blue);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mt-24 { margin-top: 24px; }
+
+/* -------------------------------------------------------------
+   CONFUSION MATRIX GRID
+   ------------------------------------------------------------- */
+.cm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.cm-cell {
+  background: #F8FAFC;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+}
+.cm-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin-bottom: 4px;
+}
+.cm-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.cm-pct {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.cm-tn { border-left: 3px solid var(--telecom-emerald); }
+.cm-tn .cm-tag { color: var(--telecom-emerald); }
+.cm-fp { border-left: 3px solid var(--telecom-amber); }
+.cm-fp .cm-tag { color: var(--telecom-amber); }
+.cm-fn { border-left: 3px solid var(--telecom-crimson); }
+.cm-fn .cm-tag { color: var(--telecom-crimson); }
+.cm-tp { border-left: 3px solid var(--telecom-blue); }
+.cm-tp .cm-tag { color: var(--telecom-blue); }
+
+/* -------------------------------------------------------------
+   SIMULATOR STUDIO (LIGHT EXECUTIVE UI)
+   ------------------------------------------------------------- */
+.simulator-wrapper {
+  display: flex;
+  gap: 32px;
+  padding: 32px;
+  background: #FFFFFF;
+  flex-wrap: wrap;
+}
+
+.sim-left-controls {
+  flex: 1 1 680px;
+}
+.sim-panel-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sim-grid-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.sim-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.sim-select {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.25s ease;
+}
+.sim-select:focus {
+  border-color: var(--telecom-blue);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.sim-sliders-box {
+  background: #F8FAFC;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 24px;
+}
+.slider-row {
+  margin-bottom: 16px;
+}
+.slider-row:last-child {
+  margin-bottom: 0;
+}
+.slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.slider-header label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.slider-badge {
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--telecom-blue);
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.vip-slider {
+  width: 100%;
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: 10px;
+  outline: none;
+  -webkit-appearance: none;
+}
+.vip-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--telecom-blue);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.5);
+  transition: transform 0.1s ease;
+}
+.vip-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.btn-block {
+  width: 100%;
+  justify-content: center;
+  padding: 14px;
+  font-size: 15px;
+}
+
+/* Simulator Right Result Panel */
+.sim-right-results {
+  flex: 1 1 360px;
+  display: flex;
+  flex-direction: column;
+}
+.gauge-card {
+  padding: 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #FFFFFF;
+}
+.gauge-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.circular-gauge-wrap {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin-bottom: 18px;
+}
+.gauge-svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+.gauge-bg {
+  fill: none;
+  stroke: #E2E8F0;
+  stroke-width: 14;
+}
+.gauge-progress {
+  fill: none;
+  stroke: var(--telecom-crimson);
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 80;
+  transition: stroke-dashoffset 0.8s ease, stroke 0.4s ease;
+}
+.gauge-center-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+.gauge-percent {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.gauge-caption {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.risk-badge-box {
+  margin-bottom: 20px;
+}
+.badge-risk-critical {
+  background: rgba(225, 29, 72, 0.1);
+  border: 1px solid var(--telecom-crimson);
+  color: var(--telecom-crimson);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 30px;
+  box-shadow: 0 2px 10px rgba(225, 29, 72, 0.15);
+}
+.badge-risk-safe {
+  background: rgba(5, 150, 105, 0.1);
+  border: 1px solid var(--telecom-emerald);
+  color: var(--telecom-emerald);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 30px;
+  box-shadow: 0 2px 10px rgba(5, 150, 105, 0.15);
+}
+
+.prescription-box {
+  width: 100%;
+  background: #F8FAFC;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  text-align: left;
+}
+.presc-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.presc-list {
+  list-style: none;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+.presc-list li {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+/* -------------------------------------------------------------
+   STRATEGIC RECOMMENDATION PILLARS (4 Grid)
+   ------------------------------------------------------------- */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pillar-card {
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+.border-cyan { border-top: 3px solid var(--telecom-blue); }
+.border-emerald { border-top: 3px solid var(--telecom-emerald); }
+.border-crimson { border-top: 3px solid var(--telecom-crimson); }
+.border-purple { border-top: 3px solid var(--telecom-purple); }
+
+.pillar-num {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.05);
+}
+
+.pillar-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.pillar-tag {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+.pillar-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.pillar-text {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------
+   DATABASE EXPLORER (LIGHT ENTERPRISE DATA GRID)
+   ------------------------------------------------------------- */
+.explorer-card {
+  padding: 28px;
+  background: #FFFFFF;
+}
+
+.explorer-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.search-input-wrap {
+  flex: 1 1 350px;
+  position: relative;
+}
+.search-input-wrap i {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+.search-input-wrap input {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 13px;
+  padding: 10px 14px 10px 38px;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.25s ease;
+}
+.search-input-wrap input:focus {
+  border-color: var(--telecom-blue);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.db-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.select-compact {
+  width: auto;
+  min-width: 160px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  margin-bottom: 18px;
+}
+
+.vip-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.vip-table th {
+  text-align: left;
+  padding: 12px 14px;
+  background: #F1F5F9;
+  color: var(--text-secondary);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 10.5px;
+  letter-spacing: 0.6px;
+  border-bottom: 2px solid var(--border-subtle);
+}
+.vip-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #F1F5F9;
+  color: var(--text-secondary);
+}
+.vip-table tr:hover td {
+  background: #F8FAFC;
+  color: var(--text-primary);
+}
+
+.status-badge-retained {
+  display: inline-block;
+  background: rgba(5, 150, 105, 0.1);
+  color: var(--telecom-emerald);
+  border: 1px solid rgba(5, 150, 105, 0.3);
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+.status-badge-churned {
+  display: inline-block;
+  background: rgba(225, 29, 72, 0.1);
+  color: var(--telecom-crimson);
+  border: 1px solid rgba(225, 29, 72, 0.3);
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.table-pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pagination-info {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-page {
+  background: #FFFFFF;
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-page:hover:not(:disabled) {
+  background: #F8FAFC;
+  border-color: var(--telecom-blue);
+  color: var(--telecom-blue);
+}
+.btn-page:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.page-indicator {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0 8px;
+}
+
+/* -------------------------------------------------------------
+   GOVERNANCE & ACKNOWLEDGMENTS PANEL
+   ------------------------------------------------------------- */
+.governance-panel {
+  padding: 32px;
+  background: #FFFFFF;
+}
+.gov-top {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 16px;
+}
+.gov-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.gov-sub {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.gov-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.gov-card {
+  background: #F8FAFC;
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 20px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.gov-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-sm);
+}
+.gov-role {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+.gov-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.gov-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* -------------------------------------------------------------
+   FOOTER
+   ------------------------------------------------------------- */
+.vip-footer {
+  border-top: 1px solid var(--border-subtle);
+  background: #FFFFFF;
+  padding: 24px 48px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.footer-inner {
+  max-width: 1560px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.tech-stack-tag {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+/* -------------------------------------------------------------
+   RESPONSIVENESS
+   ------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .kpi-grid, .pillars-grid, .gov-cards-grid, .filter-inputs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .vip-navbar {
+    padding: 14px 20px;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .main-content {
+    padding: 20px;
+  }
+  .hero-headline {
+    font-size: 32px;
+  }
+  .kpi-grid, .pillars-grid, .gov-cards-grid, .filter-inputs-grid {
+    grid-template-columns: 1fr;
+  }
+  .sim-grid-controls {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "telecom-customer-churn-analysis",
+  "version": "1.0.0",
+  "description": "![Telecom Customer Churn Analytics](https://img.shields.io/badge/Telecom%20Analytics-Customer%20Churn-0071E3?style=for-the-badge&logo=t-mobile&logoColor=white) ![Streamlit Ready](https://img.shields.io/badge/Streamlit-App%20Ready-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white) ![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white) ![Model Recall](https://img.shields.io/badge/Churner%20Recall-82.1%25-059669?style=for-the-badge)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  }
+}

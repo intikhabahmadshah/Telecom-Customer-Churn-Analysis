@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Python Artifacts & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+*.pkl.gz
+
+# Environment & Secret files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel & Deployment Builds
+.vercel/
+
+# Logs & Diagnostics
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE & OS Temporary Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Legacy Streamlit Cache
+.streamlit/

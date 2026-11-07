@@ -1,0 +1,406 @@
+{
+  "metadata": {
+    "total_customers": 7043,
+    "churn_yes": 1869,
+    "churn_no": 5174,
+    "churn_rate": 26.54,
+    "mean_monthly": 64.76,
+    "median_monthly": 70.35,
+    "mean_churn_bill": 74.44,
+    "mean_stay_bill": 61.27,
+    "monthly_rev_at_risk": 139130.85,
+    "annual_rev_at_risk": 1669570.2
+  },
+  "contract_stats": [
+    {
+      "contract": "Month-to-month",
+      "subscribers": 3875,
+      "churned": 1655,
+      "churn_rate_pct": 42.71,
+      "avg_monthly_bill": 66.4,
+      "at_risk_monthly": 120847.1
+    },
+    {
+      "contract": "One year",
+      "subscribers": 1473,
+      "churned": 166,
+      "churn_rate_pct": 11.27,
+      "avg_monthly_bill": 65.05,
+      "at_risk_monthly": 14118.45
+    },
+    {
+      "contract": "Two year",
+      "subscribers": 1695,
+      "churned": 48,
+      "churn_rate_pct": 2.83,
+      "avg_monthly_bill": 60.77,
+      "at_risk_monthly": 4165.3
+    }
+  ],
+  "tenure_stats": [
+    {
+      "bracket": "0-12 Months (High Risk)",
+      "subscribers": 2186,
+      "churned": 1037,
+      "churn_rate_pct": 47.44,
+      "median_tenure": 4
+    },
+    {
+      "bracket": "13-24 Months (Growth)",
+      "subscribers": 1024,
+      "churned": 294,
+      "churn_rate_pct": 28.71,
+      "median_tenure": 18
+    },
+    {
+      "bracket": "25-48 Months (Mature)",
+      "subscribers": 1594,
+      "churned": 325,
+      "churn_rate_pct": 20.39,
+      "median_tenure": 36
+    },
+    {
+      "bracket": "49-72 Months (Loyal)",
+      "subscribers": 2239,
+      "churned": 213,
+      "churn_rate_pct": 9.51,
+      "median_tenure": 64
+    }
+  ],
+  "charge_stats": [
+    {
+      "bracket": "Budget (<$35)",
+      "subscribers": 1735,
+      "churned": 189,
+      "churn_rate_pct": 10.89,
+      "avg_charges": 22.03
+    },
+    {
+      "bracket": "Mid-Tier ($35-$70)",
+      "subscribers": 1725,
+      "churned": 413,
+      "churn_rate_pct": 23.94,
+      "avg_charges": 54.84
+    },
+    {
+      "bracket": "High-Tier ($70-$100)",
+      "subscribers": 2681,
+      "churned": 1014,
+      "churn_rate_pct": 37.82,
+      "avg_charges": 84.7
+    },
+    {
+      "bracket": "Premium (>$100)",
+      "subscribers": 902,
+      "churned": 253,
+      "churn_rate_pct": 28.05,
+      "avg_charges": 106.67
+    }
+  ],
+  "pm_stats": [
+    {
+      "method": "Bank transfer (automatic)",
+      "subscribers": 1544,
+      "churned": 258,
+      "churn_rate_pct": 16.71,
+      "avg_bill": 67.19
+    },
+    {
+      "method": "Credit card (automatic)",
+      "subscribers": 1522,
+      "churned": 232,
+      "churn_rate_pct": 15.24,
+      "avg_bill": 66.51
+    },
+    {
+      "method": "Electronic check",
+      "subscribers": 2365,
+      "churned": 1071,
+      "churn_rate_pct": 45.29,
+      "avg_bill": 76.26
+    },
+    {
+      "method": "Mailed check",
+      "subscribers": 1612,
+      "churned": 308,
+      "churn_rate_pct": 19.11,
+      "avg_bill": 43.92
+    }
+  ],
+  "internet_stats": [
+    {
+      "service": "DSL",
+      "subscribers": 2421,
+      "churned": 459,
+      "churn_rate_pct": 18.96,
+      "avg_bill": 58.1
+    },
+    {
+      "service": "Fiber optic",
+      "subscribers": 3096,
+      "churned": 1297,
+      "churn_rate_pct": 41.89,
+      "avg_bill": 91.5
+    },
+    {
+      "service": "No",
+      "subscribers": 1526,
+      "churned": 113,
+      "churn_rate_pct": 7.4,
+      "avg_bill": 21.08
+    }
+  ],
+  "baseline_metrics": [
+    {
+      "model": "Logistic Regression",
+      "accuracy": 0.8062,
+      "precision": 0.6593,
+      "recall": 0.5588,
+      "f1_score": 0.6049,
+      "roc_auc": 0.8422
+    },
+    {
+      "model": "Decision Tree",
+      "accuracy": 0.7317,
+      "precision": 0.4946,
+      "recall": 0.4866,
+      "f1_score": 0.4906,
+      "roc_auc": 0.653
+    },
+    {
+      "model": "Random Forest",
+      "accuracy": 0.7921,
+      "precision": 0.6421,
+      "recall": 0.4893,
+      "f1_score": 0.5554,
+      "roc_auc": 0.8275
+    }
+  ],
+  "balanced_metrics": [
+    {
+      "model": "Logistic Regression (Balanced)",
+      "accuracy": 0.7381,
+      "precision": 0.5043,
+      "recall": 0.7834,
+      "f1_score": 0.6136,
+      "roc_auc": 0.8417
+    },
+    {
+      "model": "Decision Tree (Balanced)",
+      "accuracy": 0.7324,
+      "precision": 0.496,
+      "recall": 0.492,
+      "f1_score": 0.494,
+      "roc_auc": 0.6561
+    },
+    {
+      "model": "Random Forest (Balanced)",
+      "accuracy": 0.7622,
+      "precision": 0.5442,
+      "recall": 0.6417,
+      "f1_score": 0.589,
+      "roc_auc": 0.8234
+    }
+  ],
+  "tuned_metrics": {
+    "model": "Tuned Random Forest (Best Model)",
+    "accuracy": 0.7353,
+    "precision": 0.5008,
+    "recall": 0.8209,
+    "f1_score": 0.6221,
+    "roc_auc": 0.8406
+  },
+  "confusion_matrix": [
+    [
+      729,
+      306
+    ],
+    [
+      67,
+      307
+    ]
+  ],
+  "roc_data": {
+    "fpr": [
+      0.0,
+      0.0019,
+      0.0058,
+      0.0097,
+      0.0155,
+      0.0184,
+      0.0232,
+      0.028,
+      0.0338,
+      0.0396,
+      0.0435,
+      0.0493,
+      0.058,
+      0.0686,
+      0.0715,
+      0.0792,
+      0.086,
+      0.0908,
+      0.0947,
+      0.1005,
+      0.1043,
+      0.1101,
+      0.115,
+      0.1266,
+      0.1391,
+      0.1478,
+      0.1507,
+      0.1585,
+      0.1836,
+      0.1884,
+      0.1971,
+      0.2029,
+      0.2097,
+      0.23,
+      0.2357,
+      0.2589,
+      0.2725,
+      0.2792,
+      0.2947,
+      0.2986,
+      0.315,
+      0.3372,
+      0.3604,
+      0.37,
+      0.3932,
+      0.4048,
+      0.4531,
+      0.4686,
+      0.4918,
+      0.5092,
+      0.5469,
+      0.5652,
+      0.5826,
+      0.6155,
+      0.6531,
+      0.6821,
+      1.0
+    ],
+    "tpr": [
+      0.0,
+      0.0428,
+      0.0909,
+      0.1257,
+      0.1417,
+      0.1631,
+      0.1818,
+      0.2299,
+      0.2647,
+      0.2834,
+      0.3128,
+      0.3316,
+      0.3583,
+      0.377,
+      0.4091,
+      0.4305,
+      0.4492,
+      0.4813,
+      0.5134,
+      0.5348,
+      0.5668,
+      0.5749,
+      0.5989,
+      0.6176,
+      0.6283,
+      0.6364,
+      0.6551,
+      0.6658,
+      0.6845,
+      0.6925,
+      0.7059,
+      0.7139,
+      0.7273,
+      0.7433,
+      0.754,
+      0.7701,
+      0.7834,
+      0.8021,
+      0.8155,
+      0.8289,
+      0.8396,
+      0.8503,
+      0.861,
+      0.8717,
+      0.8797,
+      0.893,
+      0.9011,
+      0.9144,
+      0.9225,
+      0.9358,
+      0.9439,
+      0.9545,
+      0.9626,
+      0.9733,
+      0.9813,
+      0.992,
+      1.0
+    ],
+    "auc": 0.8406
+  },
+  "top_features": [
+    {
+      "feature": "tenure",
+      "importance": 0.1929
+    },
+    {
+      "feature": "Contract_Two year",
+      "importance": 0.1589
+    },
+    {
+      "feature": "InternetService_Fiber optic",
+      "importance": 0.0995
+    },
+    {
+      "feature": "TotalCharges",
+      "importance": 0.0972
+    },
+    {
+      "feature": "PaymentMethod_Electronic check",
+      "importance": 0.0765
+    },
+    {
+      "feature": "Contract_One year",
+      "importance": 0.0474
+    },
+    {
+      "feature": "MonthlyCharges",
+      "importance": 0.0437
+    },
+    {
+      "feature": "OnlineSecurity_Yes",
+      "importance": 0.0371
+    },
+    {
+      "feature": "TechSupport_No internet service",
+      "importance": 0.0342
+    },
+    {
+      "feature": "DeviceProtection_No internet service",
+      "importance": 0.031
+    },
+    {
+      "feature": "OnlineSecurity_No internet service",
+      "importance": 0.0251
+    },
+    {
+      "feature": "TechSupport_Yes",
+      "importance": 0.0227
+    },
+    {
+      "feature": "StreamingMovies_No internet service",
+      "importance": 0.022
+    },
+    {
+      "feature": "OnlineBackup_No internet service",
+      "importance": 0.0208
+    },
+    {
+      "feature": "InternetService_No",
+      "importance": 0.0184
+    }
+  ]
+}
